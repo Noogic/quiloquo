@@ -7,7 +7,7 @@ use App\Http\Resources\ThreadResource;
 use App\Models\Category;
 use App\Models\Thread;
 
-class CategoryThreadsController 
+class CategoryThreadsController
 {
     public function index(Category $category)
     {
