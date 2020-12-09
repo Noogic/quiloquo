@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Models\Thread;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -17,7 +18,7 @@ class CategoryTest extends TestCase
         $this->assertDatabaseMissing(self::CATEGORIES, $data);
         $route = route('categories.store');
 
-        $response = $this->postJson($route, $data);
+        $response = $this->post($route, $data);
 
         $response->assertSuccessful();
         $this->assertDatabaseHas(self::CATEGORIES, $data);
