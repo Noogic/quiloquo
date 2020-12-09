@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::post('/categories', [CategoryController::class, 'store']);

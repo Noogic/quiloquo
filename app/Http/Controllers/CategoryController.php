@@ -6,7 +6,6 @@ use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController
 {
@@ -22,19 +21,22 @@ class CategoryController
 
     public function store(CreateCategoryRequest $request)
     {
-        $category = Category::forceCreate($request->validated());
-        return $category->toArray();
+        $category = Category::create($request->validated());
+
+        return new CategoryResource($category);
     }
 
     public function update(Category $category, UpdateCategoryRequest $request)
     {
         $category->update($request->validated());
+
         return new CategoryResource($category);
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
+
         return response('', 204);
     }
 }

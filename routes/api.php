@@ -13,11 +13,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Categories
-Route::get('categories', [CategoryController::class, 'index']);
-Route::get('categories/{category}', [CategoryController::class, 'show']);
-Route::post('categories', [CategoryController::class, 'store']);
-Route::put('categories/{category}', [CategoryController::class, 'update']);
-Route::delete('categories/{category}', [CategoryController::class, 'destroy']);
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 // Category Threads
 Route::get('categories/{category}/threads', [CategoryThreadsController::class, 'index']);
@@ -28,7 +28,7 @@ Route::get('threads', [ThreadController::class, 'index']);
 Route::get('threads/{thread}', [ThreadController::class, 'show']);
 Route::put('threads/{thread}', [ThreadController::class, 'update']);
 Route::delete('threads/{thread}', [ThreadController::class, 'destroy']);
-  
+
 // Thread Comments
 Route::get('threads/{thread}/comments', [ThreadCommentsController::class, 'index']);
 Route::post('threads/{thread}/comments', [ThreadCommentsController::class, 'store']);
